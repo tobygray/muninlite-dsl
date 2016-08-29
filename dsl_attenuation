@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title DSL attenuation
+graph_vlabel attenuation in dB
+graph_args --logarithmic
+graph_category network
+
+adown.label down
+aup.label up
+
+EOM
+        exit 0;;
+esac
+
+
+
+
+printf "adown.value "
+/etc/init.d/dsl_control lucistat | grep attenuation_down=| cut -d'=' -s -f2
+printf "aup.value "
+/etc/init.d/dsl_control lucistat | grep attenuation_up=| cut -d'=' -s -f2

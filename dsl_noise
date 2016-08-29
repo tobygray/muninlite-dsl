@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title DSL noise
+graph_vlabel noise margin in db
+graph_args --logarithmic
+graph_category network
+
+ndown.label down
+nup.label up
+
+EOM
+        exit 0;;
+esac
+
+
+
+
+printf "ndown.value "
+/etc/init.d/dsl_control lucistat | grep margin_down=| cut -d'=' -s -f2
+printf "nup.value "
+/etc/init.d/dsl_control lucistat | grep margin_up=| cut -d'=' -s -f2

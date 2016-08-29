@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title DSL uptime
+graph_vlabel uptime in days
+uptime.label uptime
+graph_args --base 1000 -l 0 
+graph_scale no
+uptime.draw AREA
+graph_category network
+
+EOM
+        exit 0;;
+esac
+
+printf "uptime.value "
+/etc/init.d/dsl_control lucistat | grep line_uptime| cut -d'=' -s -f2 | awk '{ print $1/86400}'
