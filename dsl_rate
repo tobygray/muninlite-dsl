@@ -19,14 +19,27 @@ up.negative down
 #up.cdef up,8,*
 up.min 0
 
+mdown.label received
+mdown.type DERIVE
+mdown.graph no
+#mdowm.cdef down,8,*
+mdown.min 0
+mup.label bps
+mup.type DERIVE
+mup.negative down
+#mup.cdef up,8,*
+mup.min 0
+
 EOM
         exit 0;;
 esac
 
 
-
-
 printf "down.value "
-/etc/init.d/dsl_control lucistat | grep rate_down=| cut -d'=' -s -f2
+/etc/init.d/dsl_control lucistat | grep \\.data_rate_down=| cut -d'=' -s -f2
 printf "up.value "
-/etc/init.d/dsl_control lucistat | grep rate_up=| cut -d'=' -s -f2
+/etc/init.d/dsl_control lucistat | grep \\.data_rate_up=| cut -d'=' -s -f2
+printf "mdown.value "
+/etc/init.d/dsl_control lucistat | grep \\.max_data_rate_down=| cut -d'=' -s -f2
+printf "mup.value "
+/etc/init.d/dsl_control lucistat | grep \\.max_data_rate_up=| cut -d'=' -s -f2
