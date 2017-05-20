@@ -16,4 +16,4 @@ EOM
 esac
 
 printf "uptime.value "
-/etc/init.d/dsl_control lucistat | grep line_uptime| cut -d'=' -s -f2 | awk '{ print $1/86400}'
+$(dirname $0)/.get_status | grep line_uptime| cut -d'=' -s -f2 | awk '{ print $1/86400}'

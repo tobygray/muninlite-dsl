@@ -36,10 +36,10 @@ esac
 
 
 printf "down.value "
-/etc/init.d/dsl_control lucistat | grep \\.data_rate_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep \\.data_rate_down=| cut -d'=' -s -f2
 printf "up.value "
-/etc/init.d/dsl_control lucistat | grep \\.data_rate_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep \\.data_rate_up=| cut -d'=' -s -f2
 printf "mdown.value "
-/etc/init.d/dsl_control lucistat | grep \\.max_data_rate_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep \\.max_data_rate_down=| cut -d'=' -s -f2
 printf "mup.value "
-/etc/init.d/dsl_control lucistat | grep \\.max_data_rate_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep \\.max_data_rate_up=| cut -d'=' -s -f2

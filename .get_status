@@ -1,0 +1,14 @@
+#!/bin/sh
+DIR=$(dirname $0)
+TIMEOUT=10
+
+# Check the cache
+if [ -e $DIR/.config_time -a $(($(cat $DIR/.config_time) + $TIMEOUT)) -gt $(date +%s) ]
+then
+  cat $DIR/.config
+  exit
+fi
+
+/etc/init.d/dsl_control lucistat > $DIR/.config
+date +%s > $DIR/.config_time
+cat $DIR/.config

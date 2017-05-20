@@ -19,6 +19,6 @@ esac
 
 
 printf "ndown.value "
-/etc/init.d/dsl_control lucistat | grep margin_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep margin_down=| cut -d'=' -s -f2
 printf "nup.value "
-/etc/init.d/dsl_control lucistat | grep margin_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep margin_up=| cut -d'=' -s -f2

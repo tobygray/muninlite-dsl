@@ -21,10 +21,10 @@ esac
 
 
 printf "adown.value "
-/etc/init.d/dsl_control lucistat | grep line_attenuation_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep line_attenuation_down=| cut -d'=' -s -f2
 printf "aup.value "
-/etc/init.d/dsl_control lucistat | grep line_attenuation_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep line_attenuation_up=| cut -d'=' -s -f2
 printf "sig_adown.value "
-/etc/init.d/dsl_control lucistat | grep signal_attenuation_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep signal_attenuation_down=| cut -d'=' -s -f2
 printf "sig_aup.value "
-/etc/init.d/dsl_control lucistat | grep signal_attenuation_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep signal_attenuation_up=| cut -d'=' -s -f2
