@@ -21,10 +21,10 @@ esac
 
 
 printf "adown.value "
-$(dirname $0)/.get_status | grep line_attenuation_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep line_attenuation_down=| cut -d'=' -s -f2 | tr -d '"'
 printf "aup.value "
-$(dirname $0)/.get_status | grep line_attenuation_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep line_attenuation_up=| cut -d'=' -s -f2 | tr -d '"'
 printf "sig_adown.value "
-$(dirname $0)/.get_status | grep signal_attenuation_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep signal_attenuation_down=| cut -d'=' -s -f2 | tr -d '"'
 printf "sig_aup.value "
-$(dirname $0)/.get_status | grep signal_attenuation_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep signal_attenuation_up=| cut -d'=' -s -f2 | tr -d '"'

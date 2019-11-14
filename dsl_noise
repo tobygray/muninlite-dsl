@@ -19,6 +19,6 @@ esac
 
 
 printf "ndown.value "
-$(dirname $0)/.get_status | grep margin_down=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep margin_down=| cut -d'=' -s -f2 | tr -d '"'
 printf "nup.value "
-$(dirname $0)/.get_status | grep margin_up=| cut -d'=' -s -f2
+$(dirname $0)/.get_status | grep margin_up=| cut -d'=' -s -f2 | tr -d '"'
